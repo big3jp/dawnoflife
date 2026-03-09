@@ -42,7 +42,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/dawn_hero_bg_1772759928681.png');
+    background-image: url('game/asset/dawn_hero_bg_1772759928681.png');
     background-size: cover;
     background-position: center 30%;
     z-index: -3;
@@ -538,11 +538,11 @@ a {
 }
 
 .evo-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/dawn_evo_feature_1772759947067.png');
+    background-image: url('game/asset/dawn_evo_feature_1772759947067.png');
 }
 
 .symbiosis-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/dawn_symbiosis_feature_1772759963140.png');
+    background-image: url('game/asset/dawn_symbiosis_feature_1772759963140.png');
 }
 
 .feature-content {
@@ -633,15 +633,15 @@ a {
 
 /* New era images generated */
 .cambrian-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/era_cambrian_1772760188689.png');
+    background-image: url('game/asset/era_cambrian_1772760188689.png');
 }
 
 .devonian-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/era_devonian_1772760204969.png');
+    background-image: url('game/asset/era_devonian_1772760204969.png');
 }
 
 .cretaceous-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/era_cretaceous_1772760226530.png');
+    background-image: url('game/asset/era_cretaceous_1772760226530.png');
 }
 
 .era-info {
@@ -693,11 +693,11 @@ a {
 }
 
 .leviathan-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/faction_leviathan_1772760277790.png');
+    background-image: url('game/asset/faction_leviathan_1772760277790.png');
 }
 
 .swarm-bg {
-    background-image: url('file:///C:/Users/bsqin/.gemini/antigravity/brain/cd7d2575-0c92-4930-b8b6-4a18011477b9/faction_swarm_1772760252205.png');
+    background-image: url('game/asset/faction_swarm_1772760252205.png');
 }
 
 .faction-card:hover .faction-img {
