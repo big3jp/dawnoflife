@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawn of Life - 進化型リアルタイムストラテジー</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="顕生代から白亜紀までの生命進化を描く、全く新しい進化型RTS「Dawn of Life」。形質の獲得、共生と寄生、あなただけの生命の系譜を作り上げろ。">
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="hero-bg"></div>
+    <div class="overlay-gradient"></div>
+    <canvas id="bioCanvas"></canvas>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="logo">DAWN OF LIFE</div>
+        <nav class="nav-links">
+            <a href="#about">起源</a>
+            <a href="#features">進化システム</a>
+            <a href="#eras">時代（大進化）</a>
+            <a href="#factions">生存戦略</a>
+            <a href="game/index.html">【α版をプレイ】</a>
+        </nav>
+        <div class="mobile-menu-btn">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text">
+                <h2 class="pre-title">EVOLUTIONARY NARRATIVE RTS</h2>
+                <h1 class="main-title">DAWN OF LIFE</h1>
+                <p class="subtitle">顕生代の深海から、白亜紀の頂点へ。生命の繋がりと適応を描く、新感覚リアルタイムストラテジー。</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" id="trailerBtn">
+                        <span>TRAILER を見る</span>
+                        <div class="glow"></div>
+                        <div class="dna-line"></div>
+                    </button>
+                    <a href="game/index.html" class="btn btn-secondary"
+                        style="display:flex; align-items:center;">プロトタイプをプレイ</a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <p>DESCEND TO THE ORIGIN</p>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section reveal">
+            <div class="section-container">
+                <h2 class="section-title">THE GRAND EXPERIMENT<br><span>生命大爆発のシミュレーション</span></h2>
+                <div class="section-desc">
+                    <p>舞台は果てしなく広がる原始の海。そしてやがて現れる未踏の大地。</p>
+                    <p>あなたは1つの「種」の意志となり、環境に適応し、</p>
+		    <p>新たな形質を獲得しながら自らの陣営を進化させていきます。</p>
+                    <p>単純な「武力による殲滅」は、生態系の破壊を意味し、<br>自らの首を絞めることになりかねません。</p>
+                    <p>生命の繋がりが生み出す予想外の進化こそが、真の勝利、<br>すなわち<b>【生態系の支配】</b>へと至る鍵となります。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section features-section">
+            <div class="section-container">
+                <h2 class="section-title reveal">CORE MECHANICS<br><span>進化と適応のシステム</span></h2>
+
+                <div class="feature-grid">
+                    <!-- Feature 1 -->
+                    <article class="feature-card reveal-left">
+                        <div class="feature-image evo-bg">
+                            <div class="image-overlay">
+                                <span class="badge">DNA Mutation</span>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <h3>リアルタイム形質獲得</h3>
+                            <p>倒した外敵から採取した遺伝物質（バイオマス）や、環境から得られるリソースを用いて、ユニットを戦闘中にリアルタイム進化させます。</p>
+                            <p>外殻の硬化による防御力の向上、毒腺の獲得による持続ダメージの付与、保護色によるステルス能力のアンロックなど、何千通りもの突然変異を組み合わせて独自の極限生命体を創り出しましょう。
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Feature 2 -->
+                    <article class="feature-card reveal-right">
+                        <div class="feature-image symbiosis-bg">
+                            <div class="image-overlay">
+                                <span class="badge">Ecological Network</span>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <h3>共生と寄生による支配</h3>
+                            <p>他陣営の生命や、MAP上に生息する巨大な中立生物との間に関係性を構築します。</p>
+                            <p>「共生」により互いの能力と自己回復力を高め合う巨大な防衛網を築くか。あるいは「寄生」として宿主の体内から静かに神経を侵食し、敵の強力なユニットを丸ごと支配下に置くか。多様な生存戦略が戦況を大きく覆します。
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Eras (Evolution Timeline) -->
+        <section id="eras" class="section eras-section">
+            <h2 class="section-title reveal">EPOCHS OF EVOLUTION<br><span>大進化の歴史</span></h2>
+
+            <div class="era-timeline reveal-up">
+                <!-- Era 1 -->
+                <div class="era-item">
+                    <div class="era-visual cambrian-bg"></div>
+                    <div class="era-info">
+                        <div class="era-year">5.4億年前</div>
+                        <h3>【顕生代】カンブリア紀</h3>
+                        <p>ゲームの序盤。三葉虫やアノマロカリスのような奇妙な無脊椎動物が海中を支配します。視覚の獲得による索敵範囲の拡大や、硬い甲殻の獲得が勝敗を分けます。</p>
+                    </div>
+                </div>
+
+                <!-- Era 2 -->
+                <div class="era-item">
+                    <div class="era-visual devonian-bg"></div>
+                    <div class="era-info">
+                        <div class="era-year">4.1億年前</div>
+                        <h3>【古生代】デボン紀の陸上進出</h3>
+                        <p>中盤への移行フェーズ。魚類が繁栄し、やがて両生類として陸へ上がります。エラ呼吸から肺呼吸への進化、水陸両用ユニットの開発が、新たな資源地帯を制覇する鍵となります。</p>
+                    </div>
+                </div>
+
+                <!-- Era 3 -->
+                <div class="era-item">
+                    <div class="era-visual cretaceous-bg"></div>
+                    <div class="era-info">
+                        <div class="era-year">1.4億年前</div>
+                        <h3>【中生代】白亜紀の頂点</h3>
+                        <p>ゲームのクライマックス。巨大な恐竜型生命体が地響きを立てて激突します。進化の果てに生まれた「超弩級ユニット（Apex
+                            Predator）」たちが、生態系の覇権を巡り究極の争いを繰り広げます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Factions Showcase -->
+        <section id="factions" class="section factions-section">
+            <div class="section-container">
+                <h2 class="section-title reveal">SURVIVAL STRATEGIES<br><span>多様な生存戦略（陣営）</span></h2>
+
+                <div class="faction-showcase">
+                    <!-- Faction 1 -->
+                    <div class="faction-card reveal-left">
+                        <div class="faction-img leviathan-bg"></div>
+                        <div class="faction-text">
+                            <h3>巨獣共生体 [レヴィアタン]</h3>
+                            <p>圧倒的な巨体と装甲を誇る生物を中心とした陣営。背中に森のような共生菌を宿し、それらが放つ胞子で周囲の味方を回復しながら、ゆっくりとしかし確実に戦線を押し上げます。</p>
+                            <span class="faction-tag">高い耐久力</span>
+                            <span class="faction-tag">エリアヒール</span>
+                        </div>
+                    </div>
+
+                    <!-- Faction 2 -->
+                    <div class="faction-card reveal-right">
+                        <div class="faction-img swarm-bg"></div>
+                        <div class="faction-text">
+                            <h3>発光寄生群 [ザ・スウォーム]</h3>
+                            <p>単体では脆弱な微生物の群れ。しかし、その真の力は「侵食」にあります。敵の巨大生物に取り付いて操り、体内から毒素を放って内部から崩壊させる、恐ろしい寄生特化の陣営です。</p>
+                            <span class="faction-tag">数の暴力</span>
+                            <span class="faction-tag">精神支配</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / CTA -->
+        <section id="community" class="section cta-section reveal">
+            <div class="cta-box bio-glow">
+                <h2>BECOME THE ARCHITECT OF LIFE</h2>
+                <p>クローズドアルファテストの参加にあたっての最新情報をお届けします。</p>
+                <p>新たな生態系の創造に参加しませんか？</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="あなたのメールアドレスを入力" required>
+                    <button type="submit">参加する</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Dawn of Life Project. Creating organic worlds since the Cambrian explosion.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

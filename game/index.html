@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawn of Life - Alpha Prototype</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="main-canvas"></canvas>
+
+    <!-- UI Overlay Layer -->
+    <div id="ui-layer">
+        <!-- Top Resource Bar -->
+        <div id="top-bar" class="panel">
+            <div class="resource-item">
+                <span class="res-icon biomass-icon"></span>
+                <span>バイオマス: <span id="res-biomass">0</span></span>
+            </div>
+            <div class="resource-item">
+                <span class="res-icon genetic-icon"></span>
+                <span>進化Pt: <span id="res-genetic">0</span></span>
+            </div>
+
+            <div class="era-display">
+                <span id="current-era">【古生代】カンブリア紀の浅瀬</span>
+            </div>
+        </div>
+
+        <div id="control-hint">
+            <p>※左ﾄﾞﾗｯｸﾞ: 複数選択 / 右ｸﾘｯｸ: 移動・攻撃 / WASD: 視点移動</p>
+        </div>
+
+        <!-- Tech Tree Panel (Right Slide-in) -->
+        <div id="tech-tree-panel" class="panel">
+            <div class="tech-header">
+                <h2>🧬 系統樹 (進化と形質)</h2>
+                <button id="btn-close-tech-tree">閉じる(X)</button>
+            </div>
+
+            <div class="tech-content">
+                <!-- Tier 1 -->
+                <div class="tech-row">
+                    <div class="tech-node active">T1 ピカイア</div>
+                </div>
+                <div class="tech-arrow">⬇️</div>
+
+                <!-- Tier 2 Branch -->
+                <div class="tech-row split">
+                    <div class="tech-branch">
+                        <button class="action-btn tech-btn" id="tech-spines">
+                            <span class="cost">10 Gen</span>
+                            <span class="name">棘の獲得 (装甲)</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t2" disabled>
+                            <span class="cost">10 Gen</span>
+                            <span class="name">甲冑魚 (T2) へ進化</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn tech-btn" id="tech-swimbladder">
+                            <span class="cost">20 Gen</span>
+                            <span class="name">浮袋の獲得</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t3" disabled>
+                            <span class="cost">20 Gen / 20 Bio</span>
+                            <span class="name">硬骨魚 (T3) へ進化</span>
+                        </button>
+                    </div>
+
+                    <div class="tech-branch">
+                        <button class="action-btn tech-btn" id="tech-fins">
+                            <span class="cost">10 Gen</span>
+                            <span class="name">ヒレの発達 (敏捷)</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t2b" disabled>
+                            <span class="cost">10 Gen</span>
+                            <span class="name">無顎類 (T2b) へ進化</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn tech-btn" id="tech-jaw">
+                            <span class="cost">30 Gen</span>
+                            <span class="name">顎の獲得</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t3b" disabled>
+                            <span class="cost">20 Gen / 20 Bio</span>
+                            <span class="name">軟骨魚 (T3b) へ進化</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row">
+                    <button class="action-btn tech-btn" id="tech-lungs">
+                        <span class="cost">50 Gen</span>
+                        <span class="name">肺の獲得</span>
+                    </button>
+                </div>
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row">
+                    <button class="action-btn evolve-btn" id="btn-evolve-t4" disabled>
+                        <span class="cost">40 Gen / 50 Bio</span>
+                        <span class="name">肉鰭類 (T4) へ進化</span>
+                    </button>
+                </div>
+
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row">
+                    <button class="action-btn tech-btn" id="tech-legs">
+                        <span class="cost">80 Gen</span>
+                        <span class="name">四肢の獲得</span>
+                    </button>
+                </div>
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row">
+                    <button class="action-btn era-btn" id="btn-evolve-era" disabled>
+                        <span class="cost">100 Bio / 100 Gen</span>
+                        <span class="name">【上陸】両生類 (T5)</span>
+                    </button>
+                </div>
+
+                <!-- Land Branch -->
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row split">
+                    <div class="tech-branch">
+                        <button class="action-btn tech-btn" id="tech-scales">
+                            <span class="cost">100 Gen</span>
+                            <span class="name">硬鱗の形成</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t6" disabled>
+                            <span class="cost">10 Gen</span>
+                            <span class="name">硬鱗四足獣 (T6)</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t7" disabled>
+                            <span class="cost">20 Gen / 20 Bio</span>
+                            <span class="name">鎧竜 (T7) へ進化</span>
+                        </button>
+                    </div>
+
+                    <div class="tech-branch">
+                        <button class="action-btn tech-btn" id="tech-muscles">
+                            <span class="cost">100 Gen</span>
+                            <span class="name">強靭な筋肉</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t6b" disabled>
+                            <span class="cost">10 Gen</span>
+                            <span class="name">小型恐竜 (T6b)</span>
+                        </button>
+                        <div class="tech-arrow">⬇️</div>
+                        <button class="action-btn evolve-btn" id="btn-evolve-t7b" disabled>
+                            <span class="cost">20 Gen / 20 Bio</span>
+                            <span class="name">獣脚類 (T7b) へ進化</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row">
+                    <button class="action-btn tech-btn" id="tech-apex">
+                        <span class="cost">200 Gen</span>
+                        <span class="name">覇者の骨格</span>
+                    </button>
+                </div>
+                <div class="tech-arrow">⬇️</div>
+                <div class="tech-row">
+                    <button class="action-btn evolve-btn" id="btn-evolve-t8"
+                        style="background:#4a1a1a; border-color:#ff5500" disabled>
+                        <span class="cost">150 Bio / 100 Gen</span>
+                        <span class="name">ティラノサウルス (T8)</span>
+                    </button>
+                </div>
+                <div style="height:50px;"></div>
+            </div>
+        </div>
+
+        <!-- Notification Area -->
+        <div id="notification-area"></div>
+
+        <!-- Bottom Control Panel -->
+        <div id="bottom-panel" class="panel">
+            <div class="panel-section unit-info" id="selection-info">
+                <h3>選択中: なし</h3>
+                <p class="stats">HP: - / ATK: -</p>
+            </div>
+
+            <div class="panel-section production-menu">
+                <button class="action-btn spawn-btn" id="btn-spawn-current" disabled>
+                    <span class="cost" id="spawn-cost">10 Bio</span>
+                    <span class="name" id="spawn-name">【生産】ピカイア型</span>
+                </button>
+            </div>
+
+            <div class="panel-section tech-menu" style="display: flex; gap: 5px;">
+                <button class="action-btn tech-btn" id="btn-open-tech-tree"
+                    style="background:#2a1c4a; border-color:#9933ff; width:100%">
+                    <span class="cost">ツリーを開く</span>
+                    <span class="name">🧬 系統樹 (形質獲得)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Over / Win Screen -->
+        <div id="end-screen" class="hidden panel">
+            <h1 id="end-title">ECOLOGICAL COLLAPSE</h1>
+            <p id="end-desc">あなたの系統は環境に適応できなかった...</p>
+            <div class="end-actions">
+                <button id="btn-restart" class="action-btn">再挑戦</button>
+                <button id="btn-back-teaser" class="action-btn">ティザーサイトへ戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
